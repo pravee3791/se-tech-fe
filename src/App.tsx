@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ActivityList from './components/ActivityList';
 import SearchBar from './components/SearchBar';
 import ActivityI from "./types/Activity";
-import { fetchActivities } from './services/api';
+import { fetchActivities , searchActivities } from './services/api';
 
 
-const API_URL = 'http://localhost:3100/activities';
 
 function App() {
   const [activities, setActivities] = useState<ActivityI[]>([]);
@@ -15,7 +14,7 @@ function App() {
     fetchActivityData();
   }, []);
 
-  const fetchActivityData = async () => {
+  const fetchActivityData = useCallback(async () => {
     try {
       const data = await fetchActivities();
       setActivities(data);
@@ -23,14 +22,20 @@ function App() {
     } catch (error) {
       console.error('Error fetching activities:', error);
     }
-  };
+  }, []);
 
-  const handleSearch = (searchTerm: string) => {
-    const filtered = activities.filter((activity) =>
-      activity.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredActivities(filtered);
-  };
+  const handleSearch = useCallback(async (searchTerm: string) => {
+    if (searchTerm.trim() === '') {
+      setFilteredActivities(activities);
+    } else {
+      try {
+        const data = await searchActivities(searchTerm);
+        setFilteredActivities(data);
+      } catch (error) {
+        console.error('Error searching activities:', error);
+      }
+    }
+  }, [activities]);
 
   return (
     <div>
