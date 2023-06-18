@@ -1,10 +1,79 @@
+:root {
+  --page-background: #F4F6F8;
+  --card-background: #FFFFFF;
+  --text-color: #333333;
+}
+/* Example usage for cards and page background */
+
+body {
+  background-color: var(--page-background);
+  color: var(--text-color);
+}
+
+
 .activity-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  margin: 0 5% 5%;
+}
+
+
+/* Media query for tablet devices */
+@media screen and (max-width: 768px) {
+  .activity-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+  .activity-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .activity {
-  border: 1px solid #ccc;
-  padding: 10px;
+  background-color: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activity-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.activity-details {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.activity-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FF6B6B;
+  margin-bottom: 5px;
+}
+
+.activity-rating {
+  font-size: 18px;
+  color: #FFD166;
+  margin-bottom: 5px;
+}
+
+.activity-offer {
+  font-size: 16px;
+  color: #FFD166;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.activity-supplier {
+  font-size: 16px;
+  color: var(--text-color);
 }

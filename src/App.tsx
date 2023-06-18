@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import  "./App.css";
 import ActivityList from './components/ActivityList';
-import SearchBar from './components/SearchBar';
+import SearchBar from './components/SearchBar/SearchBar';
 import ActivityI from "./types/Activity";
 import { fetchActivities , searchActivities } from './services/api';
+import Header from './components/Header/Header';
 
 
 
@@ -39,6 +41,7 @@ function App() {
 
   return (
     <div>
+      <Header />
       <SearchBar onSearch={handleSearch} />
       <ActivityList activities={filteredActivities} />
     </div>
