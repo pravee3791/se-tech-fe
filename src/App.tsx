@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import ActivityList from './components/ActivityList';
+import SearchBar from './components/SearchBar';
+
+interface Activity {
+  id: number;
+  title: string;
+  price: number;
+  currency: string;
+  rating: number;
+  specialOffer: boolean;
+  supplierId: number;
+  supplierName: string;
+}
+
+const API_URL = 'http://localhost:3100/activities';
 
 function App() {
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [filteredActivities, setFilteredActivities] = useState<Activity[]>([]);
+
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  const fetchActivities = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setActivities(data);
+      setFilteredActivities(data);
+    } catch (error) {
+      console.error('Error fetching activities:', error);
+    }
+  };
+
+  const handleSearch = (searchTerm: string) => {
+    const filtered = activities.filter((activity) =>
+      activity.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredActivities(filtered);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchBar onSearch={handleSearch} />
+      <ActivityList activities={filteredActivities} />
     </div>
   );
 }
 
 export default App;
+
