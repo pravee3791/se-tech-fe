@@ -1,32 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ActivityList from './components/ActivityList';
 import SearchBar from './components/SearchBar';
+import ActivityI from "./types/Activity";
+import { fetchActivities } from './services/api';
 
-interface Activity {
-  id: number;
-  title: string;
-  price: number;
-  currency: string;
-  rating: number;
-  specialOffer: boolean;
-  supplierId: number;
-  supplierName: string;
-}
 
 const API_URL = 'http://localhost:3100/activities';
 
 function App() {
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [filteredActivities, setFilteredActivities] = useState<Activity[]>([]);
+  const [activities, setActivities] = useState<ActivityI[]>([]);
+  const [filteredActivities, setFilteredActivities] = useState<ActivityI[]>([]);
 
   useEffect(() => {
-    fetchActivities();
+    fetchActivityData();
   }, []);
 
-  const fetchActivities = async () => {
+  const fetchActivityData = async () => {
     try {
-      const response = await fetch(API_URL);
-      const data = await response.json();
+      const data = await fetchActivities();
       setActivities(data);
       setFilteredActivities(data);
     } catch (error) {
