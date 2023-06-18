@@ -2,7 +2,20 @@
   --page-background: #F4F6F8;
   --card-background: #FFFFFF;
   --text-color: #333333;
+  --ff-head: "Merriweather", serif;
+  --ff-body: "Muli", sans-serif;
+  --fs-body: 1.8rem;
+  --fs-h2: 4rem;
+  --fs-h4: 2.4rem;
+  --fs-h5: 1.2rem;
+  --clr-head: hsla(208, 11%, 15%, 1);
+  --clr-body: hsla(208, 9%, 31%, 0.8);
+  --clr-accent: hsla(216, 97%, 61%, 1);
+
+  box-sizing: border-box;
+
 }
+
 /* Example usage for cards and page background */
 
 body {
@@ -31,49 +44,4 @@ body {
   .activity-list {
     grid-template-columns: repeat(1, 1fr);
   }
-}
-
-.activity {
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.activity-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-.activity-details {
-  font-size: 16px;
-  color: var(--text-color);
-  margin-bottom: 15px;
-}
-
-.activity-price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #FF6B6B;
-  margin-bottom: 5px;
-}
-
-.activity-rating {
-  font-size: 18px;
-  color: #FFD166;
-  margin-bottom: 5px;
-}
-
-.activity-offer {
-  font-size: 16px;
-  color: #FFD166;
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.activity-supplier {
-  font-size: 16px;
-  color: var(--text-color);
 }

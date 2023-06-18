@@ -1,5 +1,5 @@
 import React from 'react';
-import Activity from './Activity';
+import Activity from './Activity/Activity';
 import ActivityI from '../types/Activity';
 
 interface Props {
