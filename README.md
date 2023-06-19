@@ -50,6 +50,14 @@ npm test
 
 This will execute all the test suites and display the test results.
 
+Here is a video with demo
+
+
+
+
+
+https://github.com/pravee3791/se-tech-fe/assets/6158365/890de015-86fd-42be-a29e-e4f912c716eb
+
 
 
 
