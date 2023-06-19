@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Activity from '../Activity';
+import Activity from '../components/Activity/Activity';
 
 const activity = {
   id: 25651,
