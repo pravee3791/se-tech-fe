@@ -29,7 +29,7 @@ The project follows a typical React application structure with the following mai
 To install the project and its dependencies, follow these steps:
 
 1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd activity-app`
+2. Navigate to the project directory: `cd se-tech-fe`
 3. Install dependencies: `npm install`
 
 ## Usage
